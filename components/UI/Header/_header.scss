@@ -12,6 +12,9 @@
   width: 100%;
   z-index: 10;
   transition: background .3s ease-in-out;
+  &--menu-open{
+    background: black;
+  }
   &:hover{ 
     background: rgba(0,0,0,1);
   }
@@ -28,10 +31,17 @@
     margin-right: 40px;
     }
   }
+  &__search-btn{
+    cursor: pointer;
+  }
+  &__menu-btn{
+    cursor: pointer;
+  }
   &__account{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
   &__user-img{
     width: 30px;

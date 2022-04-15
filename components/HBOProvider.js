@@ -1,5 +1,5 @@
 import React, { useContext, useState} from 'react';
- 
+
 export const StateContext = React.createContext();
 
 export function useStateContext(){
@@ -13,13 +13,22 @@ export function HBOProvider({children}){
     setUser(e.target.value)
     console.log(user)
   }
+  const [sideNavOpen, setSideNavOpenAction] = useState(false)
+  const [accountModalOpen, setAccountMotalOpenAction] = useState(false)
+  const [searchOpen, setSearchOpenAction] = useState(false)
 
   return(
     <StateContext.Provider
     value={{
       user,
       createUserAction,
-      defaultUserImg
+      defaultUserImg,
+      sideNavOpen,
+      setSideNavOpenAction,
+      accountModalOpen,
+      setAccountMotalOpenAction,
+      searchOpen,
+      setSearchOpenAction
     }}>
       {children}
     </StateContext.Provider>
