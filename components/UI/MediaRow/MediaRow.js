@@ -1,7 +1,23 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const MediaRow = (props) => {
   const [loadingData, setLoadingData] = useState(true);
+  // /discover/movie?with_genres=28&primary_release_year=2021
+  useEffect(() => {
+    axios
+      .get("https://api.themoviedb.org/3/discover/movie?with_genres=28&primary_release_year=2021&api_key=f40103be50cc9b93a331d8f0f2eeb811&language=en-US")
+      .then(function (response) {
+        // handle success
+        console.log('Sucess Response For ' + props.title);
+        console.log(response);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log('Error Response For ' + props.title);
+        console.log(error);
+      }) 
+  }, []);
 
   const loopComp = (comp, digit) => {
     let thumbnails = [];
@@ -23,7 +39,7 @@ const MediaRow = (props) => {
       <div className="media-row__thumbnails">
         {showThumbnails()}
 
-         {/* {loopComp(
+        {/* {loopComp(
          (<Thumbnail />), 10
 
           )}  */}
