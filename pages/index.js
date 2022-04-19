@@ -19,7 +19,7 @@ export default function Home() {
       <MediaRow title="Series" type="small-h" endpoin='api/movies/234'/>
       <MediaRow title="Action" type="small-v" endpoin='api/movies/234'/>
       <MediaRow title="Horror" type="small-v" endpoin='api/movies/234'/>
-      <MediaRow title="Animations" type="larg-h" endpoin='api/movies/234'/>
+      <MediaRow title="Animations" type="large-h" endpoin='api/movies/234'/>
       <MediaRow title="Scifi"  type="small-v" endpoin='api/movies/234'/>
       
       

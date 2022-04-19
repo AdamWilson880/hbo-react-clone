@@ -3,11 +3,15 @@ import axios from "axios";
 
 const MediaRow = (props) => {
   const [loadingData, setLoadingData] = useState(true);
+  const [movies, setMoviesData] = useState([]);
+  
   // /discover/movie?with_genres=28&primary_release_year=2021
   useEffect(() => {
     axios
       .get("https://api.themoviedb.org/3/discover/movie?with_genres=28&primary_release_year=2021&api_key=f40103be50cc9b93a331d8f0f2eeb811&language=en-US")
       .then(function (response) {
+        setMoviesData (response.data.results)
+        setLoadingData(false);
         // handle success
         console.log('Sucess Response For ' + props.title);
         console.log(response);
@@ -28,10 +32,12 @@ const MediaRow = (props) => {
     return thumbnails;
   };
   const showThumbnails = () => {
-    setTimeout(() => setLoadingData(false), 5000);
+    
     return loadingData
       ? loopComp(<Skeleton />, 10)
-      : loopComp(<Thumbnail />, 10);
+      : movies.map((movie) => {
+        return <Thumbnail movieData={movie} />
+      });
   };
   return (
     <div className={`media-row ${props.type}`}>
@@ -48,10 +54,10 @@ const MediaRow = (props) => {
   );
 };
 
-const Thumbnail = () => {
+const Thumbnail = (props) => {
   return (
     <div className="media-row__thumbnail">
-      <img src="https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/608x608/products/88997/93196/Avengers-Endgame-Final-Style-Poster-buy-original-movie-posters-at-starstills__42370.1563973516.jpg?c=2" />
+      <img src={`https://image.tmdb.org/t/p/original${props.movieData.poster_path}`} />
       <div className="media-row__top-layer">
         <i className="fas fa-play" />
       </div>
