@@ -22,7 +22,7 @@ export default function Home() {
       <MediaRow
         title="Series"
         type="small-h"
-        endpoint="discover/movie?with_genres=28&primary_release_year=2021"
+        endpoint="discover/tv?primary_release_year=2021"
       />
       <MediaRow
         title="Action"
