@@ -6,7 +6,8 @@ import MainLayout from "../components/Layouts/MainLayout";
 import FeaturedMedia from "../components/UI/FeaturedMedia/FeaturedMedia";
 import MediaRow from "../components/UI/MediaRow/MediaRow";
 import AuthCheck from "../components/AuthCheck";
-import LazyLoad from 'react-lazyload'; 
+import LazyLoad from "react-lazyload";
+import PlaceHolders from "../components/UI/Placeholders/PlaceHolders";
 
 export default function Home() {
   const globalState = useStateContext();
@@ -15,15 +16,21 @@ export default function Home() {
   return AuthCheck(
     <MainLayout>
       <FeaturedMedia />
-      <LazyLoad height={680} offset={-400} placeholder={<h1>Loading</h1>}>
+      <LazyLoad
+        offset={-400}
+        placeholder={<PlaceHolders title="Movies" type="large-v" />}>
         <MediaRow
           title="Movies"
           type="large-v"
           endpoint="discover/movie?sort_by=popularity.desc&primary_release_year=2021"
+    
         />
       </LazyLoad>
 
-      <LazyLoad height={333}> offset={-200}
+      <LazyLoad
+        offset={-400}
+        placeholder={<PlaceHolders title="Movies" type="small-h" />}
+      >
         <MediaRow
           title="Series"
           type="small-h"
@@ -31,38 +38,49 @@ export default function Home() {
         />
       </LazyLoad>
 
-      <LazyLoad height={440}> offset={-200}
+      <LazyLoad
+        offset={-400}
+        placeholder={<PlaceHolders title="Movies" type="small-v" />}
+      >
         <MediaRow
           title="Action"
           type="small-v"
           endpoint="discover/movie?with_genres=28&primary_release_year=2021"
         />
       </LazyLoad>
-     
-      <LazyLoad height={200}>
+
+      <LazyLoad
+        offset={-400}
+        placeholder={<PlaceHolders title="Movies" type="large-v" />}
+      >
         <MediaRow
           title="Horror"
-          type="small-v"
+          type="large-v"
           endpoint="discover/movie?with_genres=27&primary_release_year=2021"
         />
       </LazyLoad>
-      
-      <LazyLoad height={200}>
+
+      <LazyLoad
+        offset={-400}
+        placeholder={<PlaceHolders title="Movies" type="large-v" />}
+      >
         <MediaRow
           title="Animations"
           type="large-h"
           endpoint="discover/movie?with_genres=16&primary_release_year=2021"
         />
       </LazyLoad>
-      
-      <LazyLoad height={200}>
+
+      <LazyLoad
+        offset={-400}
+        placeholder={<PlaceHolders title="Movies" type="small-v" />}
+      >
         <MediaRow
           title="Scifi"
           type="small-v"
           endpoint="discover/movie?with_genres=878&primary_release_year=2021"
         />
       </LazyLoad>
-      
     </MainLayout>
   );
 }
