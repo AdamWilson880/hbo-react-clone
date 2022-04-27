@@ -15,7 +15,7 @@ export default function Home() {
   useEffect(() => {}, []);
   return AuthCheck(
     <MainLayout>
-      <FeaturedMedia />
+      <FeaturedMedia videoUrl="https://www.youtube.com/embed/NYH2sLid0Zc?autoplay=1&loop=1&start=16" title='Mortal Kombat' location='text' mediaUrl='/movies/id'/>
       <LazyLoad
         offset={-400}
         placeholder={<PlaceHolders title="Movies" type="large-v" />}>
