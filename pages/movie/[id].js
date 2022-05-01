@@ -18,7 +18,7 @@ export default function SingleMediaPage(props) {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${props.query.id}?api_key=f40103be50cc9b93a331d8f0f2eeb811&language=en-US`
+        `https://api.themoviedb.org/3/movie/${props.query.id}/?api_key=f40103be50cc9b93a331d8f0f2eeb811&language=en-US`,
       )
       .then(function (response) {
         setMediaData(response.data);
@@ -36,7 +36,7 @@ export default function SingleMediaPage(props) {
       <FeaturedMedia
         title={mediaData.title}
         mediaUrl={`https://image.tmdb.org/t/p/w1280${mediaData.backdrop_path}`}
-        location="text"
+        location="In theatures and HBO MAX. Streaming throughout May 23."
         linkUrl="/movies/id"
         type="single"
       />
